@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- If you want to style Wink, you must declare 'winkTheme'
+         in your application theme pointing to a style overwriting
+         some or all of the custom attributes declared in WinkTheme
+         below.                                                -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <declare-styleable name="Wink">
+        <attr name="winkTheme" format="reference"/>
+    </declare-styleable>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- These are the styles you can overwrite to give Wink
+         the appearance you want. By default the two Holo
+         variants are available.                               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <declare-styleable name="WinkThemeAttributes">
+        <attr name="winkBackground" format="reference"/>
+
+        <!-- Attributes to style the title -->
+        <attr name="winkTitlePanelStyle" format="reference"/>
+        <attr name="winkTitleStyle" format="reference"/>
+        <attr name="winkTitleDividerStyle" format="reference"/>
+        <attr name="winkTitleIconStyle" format="reference"/>
+
+        <!-- Attributes to style the message -->
+        <attr name="winkMessagePanelStyle" format="reference"/>
+        <attr name="winkMessageStyle" format="reference"/>
+
+        <!-- Attributes to style the custom content -->
+        <attr name="winkCustomContentPanelStyle" format="reference"/>
+
+        <!-- Attributes to style the buttons -->
+        <attr name="winkButtonPanelStyle" format="reference"/>
+        <attr name="winkButtonStyle" format="reference"/>
+        <attr name="winkButtonDividerStyle" format="reference"/>
+
+        <!-- Attributes to style the custom views -->
+        <attr name="winkListStyle" format="reference"/>
+    </declare-styleable>
+</resources>

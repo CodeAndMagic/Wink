@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="wink_title_text_light">#FF33B5E5</color>
+    <color name="wink_title_text_dark">#FF33B5E5</color>
+    <color name="wink_title_divider_light">#FF33B5E5</color>
+    <color name="wink_title_divider_dark">#FF33B5E5</color>
+
+    <color name="wink_message_text_light">#FF585858</color>
+    <color name="wink_message_text_dark">#FFFFFFFF</color>
+
+    <color name="wink_button_text_light">#FF585858</color>
+    <color name="wink_button_text_dark">#FFFFFFFF</color>
+    <color name="wink_button_divider_light">#FFCCCCCC</color>
+    <color name="wink_button_divider_dark">#FF666666</color>
+</resources>

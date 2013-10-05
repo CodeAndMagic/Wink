@@ -1,0 +1,28 @@
+<resources>
+
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="winkTheme">@style/WinkTheme.Dark</item>
+    </style>
+
+    <style name="MyWinkTheme" parent="@style/WinkTheme.Dark">
+        <item name="winkTitleStyle">@style/MyWinkTitleStyle</item>
+        <item name="winkTitleDividerStyle">@style/MyWinkTitleDividerStyle</item>
+        <item name="winkButtonStyle">@style/MyWinkButtonStyle</item>
+    </style>
+
+    <style name="MyWinkTitleStyle" parent="@style/WinkTitleStyle.Dark">
+       <item name="android:textColor">@color/wink_custom_title_text</item>
+       <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MyWinkTitleDividerStyle" parent="@style/WinkTitleDividerStyle.Dark">
+       <item name="android:src">@color/wink_custom_title_divider</item>
+       <item name="android:minHeight">2dp</item>
+    </style>
+
+    <style name="MyWinkButtonStyle" parent="@style/WinkButtonStyle.Dark">
+        <item name="android:background">@drawable/wink_custom_selector</item>
+        <item name="android:textColor">@color/wink_custom_title_text</item>
+    </style>
+
+</resources>

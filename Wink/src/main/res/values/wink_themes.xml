@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="WinkTheme">
+        <item name="winkTitlePanelStyle">@style/WinkTitlePanelStyle</item>
+        <item name="winkTitleDividerStyle">@style/WinkTitleDividerStyle</item>
+        <item name="winkTitleStyle">@style/WinkTitleStyle</item>
+        <item name="winkMessagePanelStyle">@style/WinkMessagePanelStyle</item>
+        <item name="winkButtonPanelStyle">@style/WinkButtonPanelStyle</item>
+        <item name="winkButtonDividerStyle">@style/WinkButtonDividerStyle</item>
+        <item name="winkButtonStyle">@style/WinkButtonStyle</item>
+    </style>
+
+    <style name="WinkTheme.Light">
+        <item name="winkBackground">@drawable/wink_dialog_background_light</item>
+        <item name="winkTitleDividerStyle">@style/WinkTitleDividerStyle.Light</item>
+        <item name="winkTitleIconStyle">@style/WinkTitleIconStyle.Light</item>
+        <item name="winkTitleStyle">@style/WinkTitleStyle.Light</item>
+        <item name="winkMessageStyle">@style/WinkMessageStyle.Light</item>
+        <item name="winkButtonDividerStyle">@style/WinkButtonDividerStyle.Light</item>
+        <item name="winkButtonStyle">@style/WinkButtonStyle.Light</item>
+    </style>
+
+    <style name="WinkTheme.Dark">
+        <item name="winkBackground">@drawable/wink_dialog_background_dark</item>
+        <item name="winkTitleDividerStyle">@style/WinkTitleDividerStyle.Dark</item>
+        <item name="winkTitleIconStyle">@style/WinkTitleIconStyle.Dark</item>
+        <item name="winkTitleStyle">@style/WinkTitleStyle.Dark</item>
+        <item name="winkMessageStyle">@style/WinkMessageStyle.Dark</item>
+        <item name="winkButtonDividerStyle">@style/WinkButtonDividerStyle.Dark</item>
+        <item name="winkButtonStyle">@style/WinkButtonStyle.Dark</item>
+    </style>
+
+</resources>

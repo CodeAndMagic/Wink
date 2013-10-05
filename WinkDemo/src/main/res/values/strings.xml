@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Wink Demo</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="choose_wink_style">Choose Wink Style</string>
+    <string name="holo_light">Holo Light</string>
+    <string name="holo_dark">Holo Dark</string>
+    <string name="custom_theme">Custom Theme</string>
+    <string name="custom_layout">Custom Layout</string>
+    <string name="custom_title">Hello Wink ;)</string>
+    <string name="custom_message">This is a demo showing the powers of Wink.\nWink is a DialogFragment
+    which can be easily customized. It comes out of the box in Holo Light and Dark flavours.\n\nEnjoy!</string>
+    <string name="list_single_choice">Wink List (Single Choice)</string>
+    <string name="planets">The nine planets</string>
+    <string name="list_multiple_choice">Wink List (Multiple Choice)</string>
+
+</resources>

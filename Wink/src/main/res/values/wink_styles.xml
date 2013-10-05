@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink Dialog Style                                                             -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkDialogStyle">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink Title Panel Styles                                                       -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkTitlePanelStyle">
+        <item name="android:minHeight">@dimen/wink_title_panel_height</item>
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink Title Styles                                                             -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkTitleStyle" parent="android:Widget.TextView">
+        <item name="android:textSize">@dimen/wink_text_size_title</item>
+        <item name="android:paddingLeft">@dimen/wink_title_padding</item>
+        <item name="android:paddingRight">@dimen/wink_title_padding</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="WinkTitleStyle.Light">
+        <item name="android:textColor">@color/wink_title_text_light</item>
+    </style>
+
+    <style name="WinkTitleStyle.Dark">
+        <item name="android:textColor">@color/wink_title_text_dark</item>
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink Title Divider Styles                                                     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkTitleDividerStyle">
+        <item name="android:minHeight">@dimen/wink_title_divider_height</item>
+    </style>
+
+    <style name="WinkTitleDividerStyle.Light">
+        <item name="android:src">@drawable/wink_title_divider_light</item>
+    </style>
+
+    <style name="WinkTitleDividerStyle.Dark">
+        <item name="android:src">@drawable/wink_title_divider_dark</item>
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink Title Icon Styles                                                        -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkTitleIconStyle">
+        <item name="android:paddingLeft">@dimen/wink_title_icon_padding</item>
+    </style>
+
+    <style name="WinkTitleIconStyle.Light">
+        <item name="android:src">@drawable/wink_ic_info_light</item>
+    </style>
+
+    <style name="WinkTitleIconStyle.Dark">
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink Message Panel Styles                                                     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkMessagePanelStyle">
+        <item name="android:minHeight">@dimen/wink_message_panel_min_height</item>
+        <item name="android:maxHeight">@dimen/wink_message_panel_max_height</item>
+        <item name="android:minWidth">@dimen/wink_message_panel_min_width</item>
+        <item name="android:maxWidth">@dimen/wink_message_panel_max_width</item>
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink Message Styles                                                           -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkMessageStyle" parent="android:Widget.TextView">
+        <item name="android:textSize">@dimen/wink_text_size_message</item>
+        <item name="android:paddingTop">@dimen/wink_message_padding_top</item>
+        <item name="android:paddingBottom">@dimen/wink_message_padding_top</item>
+        <item name="android:paddingLeft">@dimen/wink_message_padding_left</item>
+        <item name="android:paddingRight">@dimen/wink_message_padding_left</item>
+    </style>
+
+    <style name="WinkMessageStyle.Light">
+        <item name="android:textColor">@color/wink_message_text_light</item>
+    </style>
+
+    <style name="WinkMessageStyle.Dark">
+        <item name="android:textColor">@color/wink_message_text_dark</item>
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink Custom Content Panel Styles                                              -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkCustomPanelStyle">
+        <item name="android:minHeight">@dimen/wink_custom_panel_min_height</item>
+        <item name="android:minWidth">@dimen/wink_custom_panel_min_width</item>
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink ListView Styles                                                          -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkListStyle" parent="android:Widget.ListView">
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+    </style>
+
+
+    <style name="WinkListStyle.Light">
+        <item name="android:textColor">@color/wink_message_text_light</item>
+    </style>
+
+    <style name="WinkListStyle.Dark">
+        <item name="android:textColor">@color/wink_message_text_dark</item>
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink Button Panel Styles                                                      -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkButtonPanelStyle">
+        <item name="android:minHeight">@dimen/wink_button_panel_height</item>
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink Button Styles                                                            -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkButtonStyle" parent="android:Widget.Button">
+        <item name="android:paddingLeft">@dimen/wink_button_padding</item>
+        <item name="android:paddingRight">@dimen/wink_button_padding</item>
+        <item name="android:textSize">@dimen/wink_text_size_button</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="WinkButtonStyle.Light">
+        <item name="android:background">@drawable/wink_selector_light</item>
+        <item name="android:textColor">@color/wink_button_text_light</item>
+    </style>
+
+    <style name="WinkButtonStyle.Dark">
+        <item name="android:background">@drawable/wink_selector_dark</item>
+        <item name="android:textColor">@color/wink_button_text_dark</item>
+    </style>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Wink Button Divider Styles                                                    -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <style name="WinkButtonDividerStyle">
+        <item name="android:minWidth">@dimen/wink_button_divider_width</item>
+        <item name="android:minHeight">@dimen/wink_button_divider_height</item>
+    </style>
+
+    <style name="WinkButtonDividerStyle.Light">
+        <item name="android:src">@drawable/wink_button_divider_light</item>
+    </style>
+
+    <style name="WinkButtonDividerStyle.Dark">
+        <item name="android:src">@drawable/wink_button_divider_dark</item>
+    </style>
+
+</resources>

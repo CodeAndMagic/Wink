@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/wink_dialog_background_light">
+
+    <TextView
+        android:id="@+id/wink_custom_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/custom_title"
+        android:padding="16dp"/>
+
+    <View android:id="@+id/wink_custom_title_divider"
+          android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:background="@color/wink_custom_title_divider" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/wink_custom_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_message"
+            android:padding="16dp"/>
+    </ScrollView>
+
+    <View android:id="@+id/wink_custom_button_divider"
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@color/wink_custom_title_divider" />
+
+    <LinearLayout
+        android:id="@+id/wink_custom_button_panel"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/wink_left_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@android:string/cancel"
+            style="@style/MyWinkButtonStyle"/>
+
+        <View android:layout_width="1dp"
+              android:layout_height="match_parent"
+              android:background="@color/wink_custom_title_text" />
+
+        <Button
+            android:id="@+id/wink_right_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@android:string/ok"
+            style="@style/MyWinkButtonStyle"/>
+    </LinearLayout>
+
+</LinearLayout>
