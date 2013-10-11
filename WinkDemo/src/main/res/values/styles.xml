@@ -1,7 +1,28 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="actionBarItemBackground">@drawable/bg_primary_selector</item>
+        <item name="android:actionBarItemBackground" tools:ignore="NewApi">@drawable/bg_primary_selector</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonStyle</item>
         <item name="winkTheme">@style/WinkTheme.Dark</item>
+    </style>
+
+    <style name="DrawerStyle" parent="android:Widget.ListView">
+        <item name="android:background">@color/bg_drawer</item>
+        <item name="android:cacheColorHint">@color/bg_drawer</item>
+        <item name="android:divider">@color/bg_drawer_divider</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
+
+    <style name="DrawerItemStyle" parent="android:Widget.TextView">
+        <item name="android:background">@drawable/bg_primary_selector</item>
+        <item name="android:textColor">@color/text_drawer_item</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:minHeight">@dimen/drawer_item_height</item>
+    </style>
+
+    <style name="RadioButtonStyle" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/bg_btn_radio_selector</item>
     </style>
 
     <style name="MyWinkTheme" parent="@style/WinkTheme.Dark">
@@ -21,7 +42,7 @@
     </style>
 
     <style name="MyWinkButtonStyle" parent="@style/WinkButtonStyle.Dark">
-        <item name="android:background">@drawable/wink_custom_selector</item>
+        <item name="android:background">@drawable/bg_primary_selector</item>
         <item name="android:textColor">@color/wink_custom_title_text</item>
     </style>
 

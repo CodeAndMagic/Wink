@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="bg_primary_selector_active">#690</color>
+    <color name="bg_primary_selector_pressed">#9c0</color>
+
+    <color name="bg_drawer">#111</color>
+    <color name="bg_drawer_divider">#333</color>
+    <color name="text_drawer_item">#FFF</color>
+
+
     <color name="wink_custom_title_text">#ff4444</color>
     <color name="wink_custom_title_divider">#ff4444</color>
 

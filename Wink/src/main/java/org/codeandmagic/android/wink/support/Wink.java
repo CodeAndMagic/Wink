@@ -1,27 +1,36 @@
-package org.codeandmagic.android.wink;
+package org.codeandmagic.android.wink.support;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.codeandmagic.android.wink.AbstractBuilder;
+import org.codeandmagic.android.wink.IWink;
+import org.codeandmagic.android.wink.Presenter;
+import org.codeandmagic.android.wink.R;
+import org.codeandmagic.android.wink.WinkButtonCallback;
+import org.codeandmagic.android.wink.WinkListCallback;
+
 import java.util.ArrayList;
 
-import static org.codeandmagic.android.wink.AbstractBuilder.*;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_PARCELABLE;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_PARCELABLE_ARRAY;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_PARCELABLE_ARRAY_LIST;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_SERIALIZABLE;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_SERIALIZABLE_ARRAY;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_SERIALIZABLE_ARRAY_LIST;
 
 /**
  * Created by evelyne24.
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class Wink extends DialogFragment implements IWink {
 
     public static final String FRAGMENT_TAG = Wink.class.getName();
@@ -50,16 +59,16 @@ public class Wink extends DialogFragment implements IWink {
         @Override
         public Wink build() {
             final Wink wink = (Wink) Wink.instantiate(context, FRAGMENT_TAG, bundle());
-            if (titleSpan != null) {
+            if(titleSpan != null) {
                 wink.presenter.setTitleSpan(titleSpan);
             }
-            if (messageSpan != null) {
+            if(messageSpan != null) {
                 wink.presenter.setMessageSpan(messageSpan);
             }
-            if (listAdapter != null) {
+            if(listAdapter != null) {
                 wink.presenter.setListItems(listAdapter, listChoiceMode);
             }
-            if (targetFragment != null) {
+            if(targetFragment != null) {
                 wink.setTargetFragment(targetFragment, 0);
             }
             return wink;

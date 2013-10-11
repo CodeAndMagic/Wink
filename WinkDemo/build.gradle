@@ -1,23 +1,16 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.5.+'
-    }
-}
 apply plugin: 'android'
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 android {
     compileSdkVersion 18
-    buildToolsVersion "18.0.1"
+    buildToolsVersion "18.1.0"
 
     defaultConfig {
-        minSdkVersion 7
+        minSdkVersion 8
         targetSdkVersion 18
     }
 }
@@ -25,5 +18,6 @@ android {
 dependencies {
 	compile 'com.android.support:appcompat-v7:18.0.0'
     compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.larswerkman:colorpicker:1.0'
     compile project(':Wink')
 }

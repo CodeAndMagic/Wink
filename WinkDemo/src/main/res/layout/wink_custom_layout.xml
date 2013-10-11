@@ -10,7 +10,7 @@
         android:id="@+id/wink_custom_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/custom_title"
+        android:text="@string/hello_title"
         android:padding="16dp"/>
 
     <View android:id="@+id/wink_custom_title_divider"
@@ -27,7 +27,7 @@
             android:id="@+id/wink_custom_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/custom_message"
+            android:text="@string/hello_message"
             android:padding="16dp"/>
     </ScrollView>
 

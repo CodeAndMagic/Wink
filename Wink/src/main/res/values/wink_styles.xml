@@ -34,11 +34,11 @@
     </style>
 
     <style name="WinkTitleStyle.Light">
-        <item name="android:textColor">@color/wink_title_text_light</item>
+        <item name="android:textColor">@color/wink_accent_light</item>
     </style>
 
     <style name="WinkTitleStyle.Dark">
-        <item name="android:textColor">@color/wink_title_text_dark</item>
+        <item name="android:textColor">@color/wink_accent_dark</item>
     </style>
 
     <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->

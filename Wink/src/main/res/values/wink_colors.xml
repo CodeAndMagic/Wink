@@ -1,16 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="wink_title_text_light">#FF33B5E5</color>
-    <color name="wink_title_text_dark">#FF33B5E5</color>
-    <color name="wink_title_divider_light">#FF33B5E5</color>
-    <color name="wink_title_divider_dark">#FF33B5E5</color>
+    <!--
+        HEX Opacity
+
+       100% — FF
+        95% — F2
+        90% — E6
+        85% — D9
+        80% — CC
+        75% — BF
+        70% — B3
+        65% — A6
+        60% — 99
+        55% — 8C
+        50% — 80
+        45% — 73
+        40% — 66
+        35% — 59
+        30% — 4D
+        25% — 40
+        20% — 33
+        15% — 26
+        10% — 1A
+        5% — 0D
+        0% — 00
+    -->
+
+    <color name="wink_accent_light">#FF33B5E5</color>
+    <color name="wink_accent_dark">#FF0099CC</color>
 
     <color name="wink_message_text_light">#FF585858</color>
     <color name="wink_message_text_dark">#FFFFFFFF</color>
 
     <color name="wink_button_text_light">#FF585858</color>
     <color name="wink_button_text_dark">#FFFFFFFF</color>
-    <color name="wink_button_divider_light">#FFCCCCCC</color>
-    <color name="wink_button_divider_dark">#FF666666</color>
+
+    <color name="wink_button_divider_light">#99CCCCCC</color>
+    <color name="wink_button_divider_dark">#99666666</color>
+
+    <color name="wink_selector_normal_light">@android:color/transparent</color>
+    <color name="wink_selector_pressed_light">#9933B5E5</color>
+    <color name="wink_selector_focused_light">#4D33B5E5</color>
+    <color name="wink_selector_disabled_light">#2633B5E5</color>
+
+    <color name="wink_selector_normal_dark">@android:color/transparent</color>
+    <color name="wink_selector_pressed_dark">#990099CC</color>
+    <color name="wink_selector_focused_dark">#4D0099CC</color>
+    <color name="wink_selector_disabled_dark">#260099CC</color>
+    <color name="wink_selector_longpressed">#CC0099CC</color>
+
 </resources>

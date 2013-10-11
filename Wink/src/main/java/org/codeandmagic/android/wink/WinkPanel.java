@@ -3,6 +3,8 @@ package org.codeandmagic.android.wink;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -20,7 +22,7 @@ import android.widget.TextView;
 
 import java.io.File;
 
-import static org.codeandmagic.android.wink.WinkUtils.hex;
+import static org.codeandmagic.android.wink.WinkUtils.*;
 
 /**
  * Created by evelyne24.
@@ -29,22 +31,23 @@ public class WinkPanel extends LinearLayout {
 
     public static class Builder {
         private final Context context;
-        private OnClickListener clickListener;
 
         private int themeId;
+        private int accentColor;
+        private boolean useHoloTheme;
+        private boolean useLightTheme;
 
         private int titleIcon;
         private String title;
-        private String message;
         private Spannable titleSpannable;
+
+        private String message;
         private Spannable messageSpannable;
 
-        private String leftButton;
-        private String middleButton;
-        private String rightButton;
-
-        private boolean useHoloTheme;
-        private boolean useLightTheme;
+        private String negativeButton;
+        private String neutralButton;
+        private String positiveButton;
+        private OnClickListener clickListener;
 
         private ListAdapter listAdapter;
         private AdapterView.OnItemClickListener itemClickListener;
@@ -52,6 +55,11 @@ public class WinkPanel extends LinearLayout {
 
         public Builder(Context context) {
             this.context = context;
+        }
+
+        public Builder setAccentColor(int accentColor) {
+            this.accentColor = accentColor;
+            return this;
         }
 
         public Builder setThemeId(int themeId) {
@@ -74,18 +82,18 @@ public class WinkPanel extends LinearLayout {
             return this;
         }
 
-        public Builder setLeftButton(String leftButton) {
-            this.leftButton = leftButton;
+        public Builder setNegativeButton(String negativeButton) {
+            this.negativeButton = negativeButton;
             return this;
         }
 
-        public Builder setMiddleButton(String middleButton) {
-            this.middleButton = middleButton;
+        public Builder setNeutralButton(String neutralButton) {
+            this.neutralButton = neutralButton;
             return this;
         }
 
-        public Builder setRightButton(String rightButton) {
-            this.rightButton = rightButton;
+        public Builder setPositiveButton(String positiveButton) {
+            this.positiveButton = positiveButton;
             return this;
         }
 
@@ -114,10 +122,14 @@ public class WinkPanel extends LinearLayout {
             return this;
         }
 
-        public Builder setListItems(ListAdapter adapter, AdapterView.OnItemClickListener listener, int choiceMode) {
+        public Builder setListItems(ListAdapter adapter, int choiceMode) {
             this.listAdapter = adapter;
-            this.itemClickListener = listener;
             this.listChoiceMode = choiceMode;
+            return this;
+        }
+
+        public Builder setOnItemClickListener(AdapterView.OnItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
             return this;
         }
 
@@ -152,47 +164,51 @@ public class WinkPanel extends LinearLayout {
     private int buttonStyle;
     private int listStyle;
 
+    private int accentColor;
     private int themeId;
-    private int titleIcon;
-    private String title;
-    private String message;
-    private Spannable titleSpannable;
-    private Spannable messageSpannable;
-
-    private String leftButton;
-    private String middleButton;
-    private String rightButton;
-
     private boolean useHoloTheme;
     private boolean useLightTheme;
 
+    private int titleIcon;
+    private String title;
+    private Spannable titleSpannable;
+
+    private String message;
+    private Spannable messageSpannable;
+
+    private String negativeButton;
+    private String neutralButton;
+    private String positiveButton;
+    private OnClickListener clickListener;
+
     private ListAdapter listAdapter;
-    private AdapterView.OnItemClickListener itemClickListener;
     private int listChoiceMode;
+    private AdapterView.OnItemClickListener itemClickListener;
 
     private Context context;
     private Resources resources;
-    private OnClickListener clickListener;
 
     public WinkPanel(Builder builder) {
         super(builder.context);
         context = getContext();
         resources = getResources();
-        clickListener = builder.clickListener;
 
+        accentColor = builder.accentColor;
         themeId = builder.themeId;
-        title = builder.title;
-        titleIcon = builder.titleIcon;
-        message = builder.message;
-        titleSpannable = builder.titleSpannable;
-        messageSpannable = builder.messageSpannable;
-
-        leftButton = builder.leftButton;
-        middleButton = builder.middleButton;
-        rightButton = builder.rightButton;
-
         useHoloTheme = builder.useHoloTheme;
         useLightTheme = builder.useLightTheme;
+
+        title = builder.title;
+        titleIcon = builder.titleIcon;
+        titleSpannable = builder.titleSpannable;
+
+        message = builder.message;
+        messageSpannable = builder.messageSpannable;
+
+        negativeButton = builder.negativeButton;
+        neutralButton = builder.neutralButton;
+        positiveButton = builder.positiveButton;
+        clickListener = builder.clickListener;
 
         listAdapter = builder.listAdapter;
         itemClickListener = builder.itemClickListener;
@@ -334,14 +350,14 @@ public class WinkPanel extends LinearLayout {
         buttonStyle = resolveWinkStyle(winkTheme, R.attr.winkButtonStyle, defaultButtonStyle);
         listStyle = resolveWinkStyle(winkTheme, R.attr.winkListStyle, defaultListStyle);
 
-        //log.d("Wink Title Panel Style", "hex", hex(titlePanelStyle), "name", getResourceName(titlePanelStyle));
+        log.d("Wink Title Panel Style", "hex", hex(titlePanelStyle), "name", getResourceName(titlePanelStyle));
         log.d("Wink Title Style", "hex", hex(titleStyle), "name", getResourceName(titleStyle));
-        //log.d("Wink Title Icon Style", "hex", hex(titleIconStyle), "name", getResourceName(titleIconStyle));
-        //log.d("Wink Title Divider Style", "hex", hex(titleDividerStyle), "name", getResourceName(titleDividerStyle));
-        //log.d("Wink Message Panel Style", "hex", hex(messagePanelStyle), "name", getResourceName(messagePanelStyle));
+        log.d("Wink Title Icon Style", "hex", hex(titleIconStyle), "name", getResourceName(titleIconStyle));
+        log.d("Wink Title Divider Style", "hex", hex(titleDividerStyle), "name", getResourceName(titleDividerStyle));
+        log.d("Wink Message Panel Style", "hex", hex(messagePanelStyle), "name", getResourceName(messagePanelStyle));
         log.d("Wink Message Style", "hex", hex(messageStyle), "name", getResourceName(messageStyle));
-        //log.d("Wink Button Panel Style", "hex", hex(buttonPanelStyle), "name", getResourceName(buttonPanelStyle));
-        //log.d("Wink Button Divider Style", "hex", hex(buttonDividerStyle), "name", getResourceName(buttonDividerStyle));
+        log.d("Wink Button Panel Style", "hex", hex(buttonPanelStyle), "name", getResourceName(buttonPanelStyle));
+        log.d("Wink Button Divider Style", "hex", hex(buttonDividerStyle), "name", getResourceName(buttonDividerStyle));
         log.d("Wink Button Style", "hex", hex(buttonStyle), "name", getResourceName(buttonStyle));
     }
 
@@ -363,9 +379,14 @@ public class WinkPanel extends LinearLayout {
         final ViewGroup titlePanelView = inflateViewGroup(context, titlePanelParentView, R.layout.wink_title_panel, titlePanelStyle);
         final Spannable titleSpan = (titleSpannable != null) ? titleSpannable : new SpannableString(title);
         final TextView titleView = inflateTextView(context, titlePanelView, R.layout.wink_title, titleStyle, titleSpan);
-        final View titleDividerView = inflateView(context, titlePanelParentView, R.layout.wink_title_divider, titleDividerStyle);
+        final ImageView titleDividerView = (ImageView) inflateView(context, titlePanelParentView, R.layout.wink_title_divider, titleDividerStyle);
 
-        if (titleIcon > 0) {
+        if(accentColor != 0) {
+          titleView.setTextColor(accentColor);
+          titleDividerView.setImageDrawable(new ColorDrawable(accentColor));
+        }
+
+        if (titleIcon != 0) {
             final ImageView titleIconView = inflateImageView(context, titlePanelView, R.layout.wink_title_icon, titleIconStyle, titleIcon);
             titlePanelView.addView(titleIconView);
         }
@@ -386,50 +407,55 @@ public class WinkPanel extends LinearLayout {
     }
 
     private void createButtonViewHierarchy(Context context) {
-        final boolean hasLeftButton = !TextUtils.isEmpty(leftButton);
-        final boolean hasMiddleButton = !TextUtils.isEmpty(middleButton);
-        final boolean hasRightButton = !TextUtils.isEmpty(rightButton);
+        final boolean hasNegativeBtn = !TextUtils.isEmpty(negativeButton);
+        final boolean hasNeutralBtn = !TextUtils.isEmpty(neutralButton);
+        final boolean hasPositiveBtn = !TextUtils.isEmpty(positiveButton);
+        final boolean reverseButtons = hasNegativeBtn && hasPositiveBtn &&
+                Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB;
 
-        if(hasLeftButton || hasMiddleButton || hasRightButton) {
+        if(hasNegativeBtn || hasNeutralBtn || hasPositiveBtn) {
             final ViewGroup buttonPanelParentView = inflateViewGroup(context, R.layout.wink_button_panel_parent);
             final ViewGroup buttonPanelView = inflateViewGroup(context, buttonPanelParentView, R.layout.wink_button_panel, buttonPanelStyle);
             final View buttonTopDividerView = inflateView(context, buttonPanelParentView, R.layout.wink_button_divider, buttonDividerStyle);
 
-            final WinkButton leftButtonView = new WinkButton.Builder(getContext())
-                    .setId(R.id.left_button)
-                    .setText(leftButton)
+            final WinkButton negativeBtn = new WinkButton.Builder(getContext())
+                    .setId(reverseButtons ? R.id.positive_button : R.id.negative_button)
+                    .setText(reverseButtons ? positiveButton : negativeButton)
                     .setButtonStyle(buttonStyle)
                     .setDividerStyle(buttonDividerStyle)
+                    .setAccentColor(accentColor)
                     .setOnClickListener(clickListener).build();
 
-            final WinkButton middleButtonView = new WinkButton.Builder(getContext())
-                    .setId(R.id.middle_button)
-                    .setText(middleButton)
+            final WinkButton neutralBtn = new WinkButton.Builder(getContext())
+                    .setId(R.id.neutral_button)
+                    .setText(neutralButton)
                     .setButtonStyle(buttonStyle)
                     .setDividerStyle(buttonDividerStyle)
+                    .setAccentColor(accentColor)
                     .setOnClickListener(clickListener).build();
 
-            final WinkButton rightButtonView = new WinkButton.Builder(getContext())
-                    .setId(R.id.right_button)
-                    .setText(rightButton)
+            final WinkButton positiveBtn = new WinkButton.Builder(getContext())
+                    .setId(reverseButtons ? R.id.negative_button : R.id.positive_button)
+                    .setText(reverseButtons ? negativeButton: positiveButton)
                     .setButtonStyle(buttonStyle)
                     .setDividerStyle(buttonDividerStyle)
+                    .setAccentColor(accentColor)
                     .setOnClickListener(clickListener).build();
 
-            if(hasLeftButton) {
-                buttonPanelView.addView(leftButtonView);
+            if(hasNegativeBtn) {
+                buttonPanelView.addView(negativeBtn);
             }
-            if(hasMiddleButton) {
-                if(hasLeftButton) {
-                    middleButtonView.showDivider();
+            if(hasNeutralBtn) {
+                if(hasNegativeBtn) {
+                    neutralBtn.showDivider();
                 }
-                buttonPanelView.addView(middleButtonView);
+                buttonPanelView.addView(neutralBtn);
             }
-            if(hasRightButton) {
-                if(hasLeftButton || hasMiddleButton) {
-                   rightButtonView.showDivider();
+            if(hasPositiveBtn) {
+                if(hasNegativeBtn || hasNeutralBtn) {
+                   positiveBtn.showDivider();
                 }
-                buttonPanelView.addView(rightButtonView);
+                buttonPanelView.addView(positiveBtn);
             }
 
             buttonPanelParentView.addView(buttonTopDividerView);
@@ -444,6 +470,10 @@ public class WinkPanel extends LinearLayout {
         listView.setAdapter(listAdapter);
         listView.setChoiceMode(listChoiceMode);
         listView.setOnItemClickListener(itemClickListener);
+
+        if(accentColor != 0) {
+            listView.setSelector(makeSelector(accentColor));
+        }
 
         customPanelView.addView(listView);
         addView(customPanelView);
@@ -476,5 +506,6 @@ public class WinkPanel extends LinearLayout {
         }
         return imageView;
     }
+
 
 }
