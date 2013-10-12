@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<title>Wink</title>
-
-<xmp theme="Flatly" style="display:none;">
-
 ## Android Dialogs on steroids (kidding, don't use steroids!)
 
 ## What is Wink?
@@ -46,10 +40,5 @@ More examples to come soon...
 ![Wink Holo Light](http://goo.gl/wfglHW)
 
 ![Wink Holo Dark](http://goo.gl/aMhGVk)
-
-</xmp>
-
-<script src="strapdown/v/0.2/strapdown.js"></script>
-</html>
 
 
