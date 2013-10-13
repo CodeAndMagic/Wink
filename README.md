@@ -21,16 +21,17 @@ Wink is a DialogFragment which can be easily styled. It works for Android 2.2+ a
 Basic example of a dialog shown from a Fragment.
 
 ```
- new Wink.Builder(getActivity())
- .setTitle(R.string.hello_title)
- .setMessage(R.string.hello_message)
- .setUseLightTheme(useLightTheme)
- .setAccentColor(colorPicker.getColor())
- .setPositiveButton(R.string.awesome)
- .setNeutralButton(R.string.hmm)
- .setNegativeButton(R.string.no)
- .setTargetFragment(FragmentDemoHoloTheme.this)
- .show(getChildFragmentManager());
+new Wink.Builder(getActivity())
+        .setWinkId(DIALOG_SHOW)
+        .setTitle(R.string.hello_title)
+        .setMessage(R.string.hello_message)
+        .setUseLightTheme(useLightTheme)
+        .setAccentColor(colorPicker.getColor())
+        .setPositiveButton(R.string.awesome)
+        .setNeutralButton(R.string.hmm)
+        .setNegativeButton(R.string.no)
+        .setTargetFragmentTag(TAG)
+        .show(getChildFragmentManager());
 ```
 
 More examples to come soon...
