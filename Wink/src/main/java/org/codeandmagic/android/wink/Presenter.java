@@ -31,6 +31,7 @@ import static org.codeandmagic.android.wink.AbstractBuilder.ARG_TITLE_ICON_ID;
 import static org.codeandmagic.android.wink.AbstractBuilder.ARG_TITLE_ID;
 import static org.codeandmagic.android.wink.AbstractBuilder.ARG_USE_LIGHT_THEME;
 import static org.codeandmagic.android.wink.AbstractBuilder.ARG_WINK_ID;
+import static org.codeandmagic.android.wink.WinkUtils.makeSelector;
 
 /**
  * Created by evelyne24.
@@ -128,11 +129,8 @@ public class Presenter implements View.OnClickListener, AdapterView.OnItemClickL
     public void setListItems(ListAdapter adapter, int choiceMode) {
         listAdapter = adapter;
         listChoiceMode = choiceMode;
-        if (listAdapter != null && winkView != null) {
-            final ListView listView = (ListView) winkView.findViewById(R.id.wink_list_view);
-            listView.setAdapter(listAdapter);
-            listView.setChoiceMode(listChoiceMode);
-            winkView.findViewById(R.id.wink_custom_panel).setVisibility(View.VISIBLE);
+        if (useDefaultLayout && listAdapter != null && winkView != null) {
+            ((WinkLayout) winkView).setListItems(listAdapter, listChoiceMode, accentColor, this);
         }
     }
 

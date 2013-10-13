@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -142,6 +143,20 @@ public class WinkLayout extends LinearLayout {
         return messageView;
     }
 
+    public void setListItems(ListAdapter listAdapter, int listChoiceMode, int accentColor, OnItemClickListener itemClickListener) {
+        final ViewGroup customPanel = (ViewGroup) findViewById(R.id.wink_custom_panel);
+        if (listAdapter != null) {
+            ListView listView = (ListView) customPanel.findViewById(R.id.wink_list_view);
+            listView.setAdapter(listAdapter);
+            listView.setChoiceMode(listChoiceMode);
+            listView.setOnItemClickListener(itemClickListener);
+            if (accentColor != 0) {
+                listView.setSelector(makeSelector(accentColor));
+            }
+            customPanel.setVisibility(View.VISIBLE);
+        }
+    }
+
     private void init(Builder builder) {
         setOrientation(VERTICAL);
 
@@ -178,7 +193,6 @@ public class WinkLayout extends LinearLayout {
     private void bindViews(Builder builder) {
         bindTitleView(builder);
         bindMessageView(builder);
-        bindCustomView(builder);
         bindButtonsView(builder);
     }
 
@@ -219,21 +233,6 @@ public class WinkLayout extends LinearLayout {
             }
         } else {
             messagePanel.setVisibility(View.GONE);
-        }
-    }
-
-    private void bindCustomView(Builder builder) {
-        final ViewGroup customPanel = (ViewGroup) findViewById(R.id.wink_custom_panel);
-        if (builder.listAdapter != null) {
-            final ListView listView = (ListView) customPanel.findViewById(R.id.wink_list_view);
-            listView.setAdapter(builder.listAdapter);
-            listView.setChoiceMode(builder.listChoiceMode);
-            listView.setOnItemClickListener(builder.itemClickListener);
-
-            if (builder.accentColor != 0) {
-                listView.setSelector(makeSelector(builder.accentColor));
-            }
-            customPanel.setVisibility(View.VISIBLE);
         }
     }
 
