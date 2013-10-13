@@ -38,9 +38,9 @@ More examples to come soon...
 
 ![Wink Demo](https://db.tt/zmtZeiUw)
 
-![Wink Holo Light](https://db.tt/ucSW6NF9)
-
 ![Wink Holo Dark](https://db.tt/cQ17KP1f)
+
+![Wink Holo Light](https://db.tt/ucSW6NF9)
 
 ![Wink ListView](https://db.tt/lpHn5kUn)
 
