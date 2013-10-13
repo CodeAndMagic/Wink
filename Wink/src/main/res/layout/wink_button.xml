@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-          android:id="@+id/wink_button"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_weight="1"/>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <View
+        android:id="@+id/wink_button_divider"
+        android:layout_width="@dimen/wink_divider_width"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        style="?attr/winkButtonDividerStyle" />
+
+    <Button
+        android:id="@+id/wink_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/wink_button_divider"
+        style="?attr/winkButtonStyle" />
+
+</merge>

@@ -18,26 +18,27 @@
     <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <declare-styleable name="WinkThemeAttributes">
         <attr name="winkBackground" format="reference"/>
+        <attr name="winkMaxWidth" format="dimension" />
+        <attr name="winkMaxHeight" format="dimension" />
 
         <!-- Attributes to style the title -->
         <attr name="winkTitlePanelStyle" format="reference"/>
         <attr name="winkTitleStyle" format="reference"/>
         <attr name="winkTitleDividerStyle" format="reference"/>
-        <attr name="winkTitleIconStyle" format="reference"/>
 
         <!-- Attributes to style the message -->
         <attr name="winkMessagePanelStyle" format="reference"/>
         <attr name="winkMessageStyle" format="reference"/>
 
         <!-- Attributes to style the custom content -->
-        <attr name="winkCustomContentPanelStyle" format="reference"/>
+        <attr name="winkCustomPanelStyle" format="reference"/>
 
         <!-- Attributes to style the buttons -->
         <attr name="winkButtonPanelStyle" format="reference"/>
         <attr name="winkButtonStyle" format="reference"/>
         <attr name="winkButtonDividerStyle" format="reference"/>
 
-        <!-- Attributes to style the custom views -->
+        <!-- Attributes to style the list -->
         <attr name="winkListStyle" format="reference"/>
     </declare-styleable>
 </resources>

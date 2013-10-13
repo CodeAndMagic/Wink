@@ -4,7 +4,9 @@ import android.content.Context;
 import android.os.Build;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -14,16 +16,15 @@ import static org.codeandmagic.android.wink.WinkUtils.makeSelector;
 /**
  * Created by evelyne24.
  */
-public class WinkButton extends LinearLayout {
+public class WinkButton extends RelativeLayout {
 
     public static class Builder {
-        private final Context context;
         private int id;
-        private int buttonStyle;
-        private int dividerStyle;
+        private int themeId;
         private int accentColor;
         private String text;
         private OnClickListener clickListener;
+        private final Context context;
 
         public Builder(Context context) {
             this.context = context;
@@ -34,13 +35,8 @@ public class WinkButton extends LinearLayout {
             return this;
         }
 
-        public Builder setButtonStyle(int buttonStyle) {
-            this.buttonStyle = buttonStyle;
-            return this;
-        }
-
-        public Builder setDividerStyle(int dividerStyle) {
-            this.dividerStyle = dividerStyle;
+        public Builder setThemeId(int themeId) {
+            this.themeId = themeId;
             return this;
         }
 
@@ -64,33 +60,30 @@ public class WinkButton extends LinearLayout {
         }
     }
 
-    private final int dividerStyle;
+    private final View dividerView;
 
     public WinkButton(Builder builder) {
         super(builder.context);
-        this.dividerStyle = builder.dividerStyle;
+        setLayoutParams(new LinearLayout.LayoutParams(0, WRAP_CONTENT, 1));
 
-        final TextView textView = new TextView(new ContextThemeWrapper(getContext(), builder.buttonStyle), null, builder.buttonStyle);
-        textView.setId(builder.id);
-        textView.setLayoutParams(new LayoutParams(MATCH_PARENT, MATCH_PARENT, 1));
-        textView.setText(builder.text);
-        textView.setOnClickListener(builder.clickListener);
+        View.inflate(new ContextThemeWrapper(builder.context, builder.themeId), R.layout.wink_button, this);
+        dividerView = findViewById(R.id.wink_button_divider);
+
+        final TextView buttonView = (TextView) findViewById(R.id.wink_button);
+        buttonView.setText(builder.text);
+        buttonView.setId(builder.id);
+        buttonView.setOnClickListener(builder.clickListener);
 
         if (builder.accentColor != 0) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                textView.setBackground(makeSelector(builder.accentColor));
+                buttonView.setBackground(makeSelector(builder.accentColor));
             } else {
-                textView.setBackgroundDrawable(makeSelector(builder.accentColor));
+                buttonView.setBackgroundDrawable(makeSelector(builder.accentColor));
             }
         }
-
-        setLayoutParams(new LayoutParams(MATCH_PARENT, MATCH_PARENT, 1));
-        addView(textView);
     }
 
     public void showDivider() {
-        final View dividerView = View.inflate(new ContextThemeWrapper(getContext(), dividerStyle), R.layout.wink_button_divider, null);
-        dividerView.setLayoutParams(new LayoutParams(WRAP_CONTENT, MATCH_PARENT));
-        addView(dividerView, 0);
+        dividerView.setVisibility(View.VISIBLE);
     }
 }

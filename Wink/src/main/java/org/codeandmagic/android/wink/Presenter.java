@@ -1,5 +1,6 @@
 package org.codeandmagic.android.wink;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.TextUtils;
@@ -9,9 +10,27 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import static org.codeandmagic.android.wink.AbstractBuilder.*;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_ACCENT_COLOR;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_CANCELABLE;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_CANCELABLE_ON_TOUCH_OUTSIDE;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_LAYOUT_ID;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_MESSAGE;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_MESSAGE_ID;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_NEGATIVE_BUTTON;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_NEGATIVE_BUTTON_ID;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_NEUTRAL_BUTTON;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_NEUTRAL_BUTTON_ID;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_POSITIVE_BUTTON;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_POSITIVE_BUTTON_ID;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_TITLE;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_TITLE_ICON;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_TITLE_ICON_ID;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_TITLE_ID;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_USE_LIGHT_THEME;
+import static org.codeandmagic.android.wink.AbstractBuilder.ARG_WINK_ID;
 
 /**
  * Created by evelyne24.
@@ -20,7 +39,6 @@ public class Presenter implements View.OnClickListener, AdapterView.OnItemClickL
 
     protected int accentColor;
     protected int winkId;
-    protected int themeId;
     protected int titleId;
     protected int titleIconId;
     protected int messageId;
@@ -34,6 +52,7 @@ public class Presenter implements View.OnClickListener, AdapterView.OnItemClickL
     protected String message;
     protected Spannable titleSpan;
     protected Spannable messageSpan;
+    protected TextView messageView;
 
     protected String negativeButton;
     protected String neutralButton;
@@ -42,13 +61,13 @@ public class Presenter implements View.OnClickListener, AdapterView.OnItemClickL
     protected boolean cancelable;
     protected boolean cancelableOnTouchOutside;
     protected boolean useDefaultLayout;
-    protected boolean useHoloTheme;
     protected boolean useLightTheme;
 
     protected ListAdapter listAdapter;
     protected int listChoiceMode;
 
     protected final IWink wink;
+    protected View winkView;
 
     public Presenter(IWink wink) {
         this.wink = wink;
@@ -56,13 +75,12 @@ public class Presenter implements View.OnClickListener, AdapterView.OnItemClickL
 
     public void onCreate(Bundle args) {
         initArguments(args);
+        winkView = useDefaultLayout ? createLayout() : setupCustomLayout(wink.getActivity());
     }
-    
+
     protected void initArguments(Bundle args) {
         winkId = args.getInt(ARG_WINK_ID);
-        themeId = args.getInt(ARG_THEME_ID);
         layoutId = args.getInt(ARG_LAYOUT_ID);
-        useHoloTheme = args.getBoolean(ARG_USE_HOLO_THEME);
         useLightTheme = args.getBoolean(ARG_USE_LIGHT_THEME);
         accentColor = args.getInt(ARG_ACCENT_COLOR);
         useDefaultLayout = (layoutId == 0);
@@ -99,10 +117,6 @@ public class Presenter implements View.OnClickListener, AdapterView.OnItemClickL
         return cancelableOnTouchOutside;
     }
 
-    public boolean useHoloTheme() {
-        return useHoloTheme;
-    }
-
     public void setTitleSpan(Spannable titleSpan) {
         this.titleSpan = titleSpan;
     }
@@ -112,32 +126,43 @@ public class Presenter implements View.OnClickListener, AdapterView.OnItemClickL
     }
 
     public void setListItems(ListAdapter adapter, int choiceMode) {
-       listAdapter = adapter;
-       listChoiceMode = choiceMode;
+        listAdapter = adapter;
+        listChoiceMode = choiceMode;
+        if (listAdapter != null && winkView != null) {
+            final ListView listView = (ListView) winkView.findViewById(R.id.wink_list_view);
+            listView.setAdapter(listAdapter);
+            listView.setChoiceMode(listChoiceMode);
+            winkView.findViewById(R.id.wink_custom_panel).setVisibility(View.VISIBLE);
+        }
+    }
+
+    public TextView getMessageView() {
+        return messageView;
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container) {
-        if (useDefaultLayout) {
-            return new WinkPanel.Builder(wink.getActivity())
-                    .setAccentColor(accentColor)
-                    .setThemeId(themeId)
-                    .setUseHoloTheme(useHoloTheme)
-                    .setUseLightTheme(useLightTheme)
-                    .setTitle(title)
-                    .setTitleSpannable(titleSpan)
-                    .setTitleIcon(titleIcon)
-                    .setMessage(message)
-                    .setMessageSpannable(messageSpan)
-                    .setNegativeButton(negativeButton)
-                    .setNeutralButton(neutralButton)
-                    .setPositiveButton(positiveButton)
-                    .setListItems(listAdapter, listChoiceMode)
-                    .setOnClickListener(this)
-                    .setOnItemClickListener(this)
-                    .build();
-        } else {
-            return setupUserLayout(inflater, container);
-        }
+        return winkView;
+    }
+
+    private WinkLayout createLayout() {
+        final WinkLayout layout = new WinkLayout.Builder(wink.getActivity())
+                .setAccentColor(accentColor)
+                .setUseLightTheme(useLightTheme)
+                .setTitle(title)
+                .setTitleSpannable(titleSpan)
+                .setTitleIcon(titleIcon)
+                .setMessage(message)
+                .setMessageSpannable(messageSpan)
+                .setNegativeButton(negativeButton)
+                .setNeutralButton(neutralButton)
+                .setPositiveButton(positiveButton)
+                .setListItems(listAdapter, listChoiceMode)
+                .setOnClickListener(this)
+                .setOnItemClickListener(this)
+                .build();
+
+        messageView = layout.getMessageView();
+        return layout;
     }
 
     @Override
@@ -153,37 +178,37 @@ public class Presenter implements View.OnClickListener, AdapterView.OnItemClickL
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final WinkListCallback callback = wink.getListCallback();
-        if(callback != null) {
-           callback.onItemClick(parent, view, position, id, wink);
-        }
-        else {
+        if (callback != null) {
+            callback.onItemClick(parent, view, position, id, wink);
+        } else {
             wink.dismiss();
         }
     }
 
-    private View setupUserLayout(LayoutInflater inflater, ViewGroup container) {
-        final View view = inflater.inflate(layoutId, container, false);
+    private View setupCustomLayout(Context context) {
+        final View view = View.inflate(context, layoutId, null);
         final ImageView titleIconView = (ImageView) view.findViewById(titleIconId);
         if (titleIconView != null && titleIcon > 0) {
             titleIconView.setImageResource(titleIcon);
         }
         setupTextView(view, titleId, title, false);
-        setupTextView(view, messageId, message, false);
+        messageView = setupTextView(view, messageId, message, false);
         setupTextView(view, negativeButtonId, negativeButton, true);
         setupTextView(view, neutralButtonId, neutralButton, true);
         setupTextView(view, positiveButtonId, positiveButton, true);
         return view;
     }
 
-    private void setupTextView(View view, int viewId, String text, boolean clickable) {
+    private TextView setupTextView(View view, int viewId, String text, boolean clickable) {
         final TextView textView = (TextView) view.findViewById(viewId);
         if (textView != null) {
-            if(!TextUtils.isEmpty(text)) {
+            if (!TextUtils.isEmpty(text)) {
                 textView.setText(text);
             }
             if (clickable) {
                 textView.setOnClickListener(this);
             }
         }
+        return textView;
     }
 }

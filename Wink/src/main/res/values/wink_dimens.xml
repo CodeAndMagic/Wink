@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="wink_dialog_max_width">400dp</dimen>
+    <dimen name="wink_dialog_max_height">500dp</dimen>
+
     <dimen name="wink_text_size_title">20sp</dimen>
     <dimen name="wink_text_size_message">16sp</dimen>
     <dimen name="wink_text_size_button">16sp</dimen>
 
-    <dimen name="wink_title_panel_height">64dp</dimen>
+    <dimen name="wink_title_panel_height">54dp</dimen>
     <dimen name="wink_title_padding">8dp</dimen>
     <dimen name="wink_title_icon_padding">8dp</dimen>
     <dimen name="wink_title_divider_height">2dp</dimen>
@@ -21,8 +24,12 @@
     <dimen name="wink_custom_panel_min_width">250dp</dimen>
 
     <dimen name="wink_button_panel_height">48dp</dimen>
-    <dimen name="wink_button_divider_height">1dp</dimen>
-    <dimen name="wink_button_divider_width">1dp</dimen>
     <dimen name="wink_button_padding">4dp</dimen>
+
+    <dimen name="wink_divider_height">1dp</dimen>
+    <dimen name="wink_divider_width">1dp</dimen>
+
+    <dimen name="wink_list_item_height">48dp</dimen>
+    <dimen name="wink_list_item_padding">16dp</dimen>
 
 </resources>

@@ -96,21 +96,29 @@ public class ActivityDemo extends ActionBarActivity implements AdapterView.OnIte
 
     private void selectItem(int position) {
         final Fragment fragment;
+        final String tag;
 
         switch (position) {
             case 0:
-                fragment = new FragmentDemoHoloTheme();
+                fragment = new FragmentHoloThemeDemo();
+                tag = FragmentHoloThemeDemo.TAG;
+                break;
+
+            case 3:
+                fragment = new FragmentListDemo();
+                tag = FragmentListDemo.TAG;
                 break;
 
             default:
                 fragment = new Fragment();
+                tag = "";
                 break;
         }
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
         // This line is extremely important if the option menu is enabled for more than first level.
         fragmentManager.popBackStack();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, tag).commit();
 
         // update selected item and title, then close the drawer
         drawerList.setItemChecked(position, true);

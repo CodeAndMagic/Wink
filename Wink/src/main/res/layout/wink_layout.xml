@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/wink_title_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        style="?attr/winkTitlePanelStyle">
+
+        <TextView
+            android:id="@+id/wink_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            style="?attr/winkTitleStyle" />
+
+        <View
+            android:id="@+id/wink_title_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wink_title_divider_height"
+            style="?attr/winkTitleDividerStyle" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/wink_message_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        style="?attr/winkMessagePanelStyle">
+
+        <TextView
+            android:id="@+id/wink_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?attr/winkMessageStyle" />
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/wink_custom_panel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        style="?attr/winkCustomPanelStyle">
+
+        <ListView
+            android:id="@+id/wink_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?attr/winkListStyle" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/wink_button_panel_parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/wink_button_panel_height"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/wink_button_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wink_divider_height"
+            style="?attr/winkButtonDividerStyle" />
+
+        <LinearLayout
+            android:id="@+id/wink_button_panel"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="locale"
+            android:measureWithLargestChild="true"
+            style="?attr/winkButtonPanelStyle" />
+    </LinearLayout>
+
+</merge>

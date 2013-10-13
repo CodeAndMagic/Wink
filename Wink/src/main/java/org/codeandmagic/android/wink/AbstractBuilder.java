@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public abstract class AbstractBuilder<T extends AbstractBuilder<T>> {
 
     public static final String ARG_WINK_ID = "wink_id";
-    public static final String ARG_THEME_ID = "theme_id";
     public static final String ARG_LAYOUT_ID = "layout_id";
     public static final String ARG_TITLE_ICON_ID = "title_icon_id";
     public static final String ARG_TITLE_ID = "title_id";
@@ -35,7 +34,6 @@ public abstract class AbstractBuilder<T extends AbstractBuilder<T>> {
 
     public static final String ARG_CANCELABLE = "cancelable";
     public static final String ARG_CANCELABLE_ON_TOUCH_OUTSIDE = "cancelable_on_touch_outside";
-    public static final String ARG_USE_HOLO_THEME = "use_light_theme";
     public static final String ARG_USE_LIGHT_THEME = "overwrite_xml_theme";
     public static final String ARG_ACCENT_COLOR = "accent_color";
 
@@ -47,14 +45,14 @@ public abstract class AbstractBuilder<T extends AbstractBuilder<T>> {
     public static final String ARG_PARCELABLE_ARRAY = "parcelable_array";
     public static final String ARG_PARCELABLE_ARRAY_LIST = "parcelable_array_list";
 
+    public static final String ARG_TARGET_FRAGMENT_TAG = "target_fragment_tag";
+
     protected abstract T self();
 
     protected final Context context;
 
     protected int accentColor;
     protected int winkId;
-    protected int themeId;
-    protected boolean useHoloTheme = true;
     protected boolean useLightTheme = false;
 
     protected int layoutId;
@@ -78,9 +76,6 @@ public abstract class AbstractBuilder<T extends AbstractBuilder<T>> {
     protected boolean cancelable = true;
     protected boolean cancelableOnTouchOutside = true;
 
-    protected ListAdapter listAdapter;
-    protected int listChoiceMode;
-
     protected Serializable serializable;
     protected Serializable[] serializableArray;
     protected ArrayList<Serializable> serializableArrayList;
@@ -89,17 +84,14 @@ public abstract class AbstractBuilder<T extends AbstractBuilder<T>> {
     protected Parcelable[] parcelableArray;
     protected ArrayList<Parcelable> parcelableArrayList;
 
+    protected String targetFragmentTag;
+
     public AbstractBuilder(Context context) {
         this.context = context;
     }
 
     public T setWinkId(int winkId) {
         this.winkId = winkId;
-        return self();
-    }
-
-    public T setThemeId(int themeId) {
-        this.themeId = themeId;
         return self();
     }
 
@@ -198,11 +190,6 @@ public abstract class AbstractBuilder<T extends AbstractBuilder<T>> {
         return self();
     }
 
-    public T setUseHoloTheme(boolean useHoloTheme) {
-        this.useHoloTheme = useHoloTheme;
-        return self();
-    }
-
     public T setUseLightTheme(boolean useLightTheme) {
         this.useLightTheme = useLightTheme;
         return self();
@@ -213,13 +200,8 @@ public abstract class AbstractBuilder<T extends AbstractBuilder<T>> {
         return self();
     }
 
-    public T setListItems(ListAdapter adapter) {
-        return setListItems(adapter, ListView.CHOICE_MODE_SINGLE);
-    }
-
-    public T setListItems(ListAdapter adapter, int choiceMode) {
-        this.listAdapter = adapter;
-        this.listChoiceMode = choiceMode;
+    public T setTargetFragmentTag(String targetFragmentTag) {
+        this.targetFragmentTag = targetFragmentTag;
         return self();
     }
 
@@ -227,24 +209,23 @@ public abstract class AbstractBuilder<T extends AbstractBuilder<T>> {
         final Bundle args = new Bundle();
 
         args.putInt(ARG_WINK_ID, winkId);
-        args.putInt(ARG_THEME_ID, themeId);
         args.putInt(ARG_LAYOUT_ID, layoutId);
-        args.putBoolean(ARG_USE_HOLO_THEME, useHoloTheme);
-        args.putBoolean(ARG_USE_LIGHT_THEME, useLightTheme);
         args.putInt(ARG_ACCENT_COLOR, accentColor);
+        args.putBoolean(ARG_USE_LIGHT_THEME, useLightTheme);
 
         args.putInt(ARG_TITLE_ICON_ID, titleIconId);
         args.putInt(ARG_TITLE_ICON, titleIcon);
         args.putString(ARG_TITLE, title);
 
-        args.putInt(ARG_NEGATIVE_BUTTON_ID, negativeButtonId);
-        args.putInt(ARG_NEUTRAL_BUTTON_ID, neutralButtonId);
-        args.putInt(ARG_POSITIVE_BUTTON_ID, positiveButtonId);
-
         args.putString(ARG_MESSAGE, message);
 
+        args.putInt(ARG_NEGATIVE_BUTTON_ID, negativeButtonId);
         args.putString(ARG_NEGATIVE_BUTTON, negativeButton);
+
+        args.putInt(ARG_NEUTRAL_BUTTON_ID, neutralButtonId);
         args.putString(ARG_NEUTRAL_BUTTON, neutralButton);
+
+        args.putInt(ARG_POSITIVE_BUTTON_ID, positiveButtonId);
         args.putString(ARG_POSITIVE_BUTTON, positiveButton);
 
         args.putBoolean(ARG_CANCELABLE, cancelable);
@@ -258,8 +239,10 @@ public abstract class AbstractBuilder<T extends AbstractBuilder<T>> {
         args.putParcelableArray(ARG_PARCELABLE_ARRAY, parcelableArray);
         args.putParcelableArrayList(ARG_PARCELABLE_ARRAY_LIST, parcelableArrayList);
 
+        args.putString(ARG_TARGET_FRAGMENT_TAG, targetFragmentTag);
+
         return args;
     }
 
-    public abstract IWink build();
+    protected abstract IWink build();
 }

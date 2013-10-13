@@ -77,6 +77,17 @@ public class L {
         }
     }
 
+    public void e(String msg, Object arg) {
+        if(DEBUG) {
+            Log.e(TAG, log(msg, arg, NL));
+        }
+    }
+
+    public void e(String msg, Object...args) {
+        if(DEBUG) {
+            Log.e(TAG, log(msg, args));
+        }
+    }
 
     private StringBuilder header(StringBuilder b, String title) {
         hr(b);

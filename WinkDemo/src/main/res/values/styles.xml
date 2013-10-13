@@ -4,7 +4,7 @@
         <item name="actionBarItemBackground">@drawable/bg_primary_selector</item>
         <item name="android:actionBarItemBackground" tools:ignore="NewApi">@drawable/bg_primary_selector</item>
         <item name="android:radioButtonStyle">@style/RadioButtonStyle</item>
-        <item name="winkTheme">@style/WinkTheme.Dark</item>
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
     </style>
 
     <style name="DrawerStyle" parent="android:Widget.ListView">
@@ -23,6 +23,14 @@
 
     <style name="RadioButtonStyle" parent="android:Widget.CompoundButton.RadioButton">
         <item name="android:button">@drawable/bg_btn_radio_selector</item>
+    </style>
+
+    <style name="ButtonStyle" parent="android:Widget.Button">
+        <item name="android:background">@drawable/btn_default</item>
+        <item name="android:minWidth">@dimen/button_min_width</item>
+        <item name="android:minHeight">@dimen/button_min_height</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="MyWinkTheme" parent="@style/WinkTheme.Dark">

@@ -1,6 +1,9 @@
 package org.codeandmagic.android.wink;
 
 import android.app.Activity;
+import android.text.Spannable;
+import android.widget.ListAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -30,4 +33,12 @@ public interface IWink {
     WinkButtonCallback getButtonCallback();
 
     WinkListCallback getListCallback();
+
+    TextView getMessageView();
+
+    void setMessageSpan(Spannable messageSpan);
+
+    void setTitleSpan(Spannable titleSpan);
+
+    void setListItems(ListAdapter adapter, int choiceMode);
 }

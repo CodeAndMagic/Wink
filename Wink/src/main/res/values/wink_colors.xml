@@ -30,14 +30,11 @@
     <color name="wink_accent_light">#FF33B5E5</color>
     <color name="wink_accent_dark">#FF0099CC</color>
 
-    <color name="wink_message_text_light">#FF585858</color>
-    <color name="wink_message_text_dark">#FFFFFFFF</color>
+    <color name="wink_text_light">#FF585858</color>
+    <color name="wink_text_dark">#FFFFFFFF</color>
 
-    <color name="wink_button_text_light">#FF585858</color>
-    <color name="wink_button_text_dark">#FFFFFFFF</color>
-
-    <color name="wink_button_divider_light">#99CCCCCC</color>
-    <color name="wink_button_divider_dark">#99666666</color>
+    <color name="wink_divider_light">#99CCCCCC</color>
+    <color name="wink_divider_dark">#99666666</color>
 
     <color name="wink_selector_normal_light">@android:color/transparent</color>
     <color name="wink_selector_pressed_light">#9933B5E5</color>
