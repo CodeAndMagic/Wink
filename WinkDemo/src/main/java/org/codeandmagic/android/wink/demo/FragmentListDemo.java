@@ -1,4 +1,4 @@
-package org.codeandmagic.android.wink;
+package org.codeandmagic.android.wink.demo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 
+import org.codeandmagic.android.wink.IWink;
+import org.codeandmagic.android.wink.WinkListCallback;
+import org.codeandmagic.android.wink.demo.R;
 import org.codeandmagic.android.wink.support.Wink;
 
 /**

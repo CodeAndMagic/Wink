@@ -1,4 +1,4 @@
-package org.codeandmagic.android.wink;
+package org.codeandmagic.android.wink.demo;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,11 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
+import com.larswerkman.holocolorpicker.ColorPicker;
+import com.larswerkman.holocolorpicker.OpacityBar;
+import com.larswerkman.holocolorpicker.SVBar;
+
+import org.codeandmagic.android.wink.IWink;
+import org.codeandmagic.android.wink.WinkButtonCallback;
+import org.codeandmagic.android.wink.WinkViewCreatedCallback;
+import org.codeandmagic.android.wink.demo.R;
 import org.codeandmagic.android.wink.support.Wink;
 
-import com.larswerkman.colorpicker.ColorPicker;
-import com.larswerkman.colorpicker.OpacityBar;
-import com.larswerkman.colorpicker.SVBar;
 
 /**
  * Created by evelyne24 on 09/10/2013.

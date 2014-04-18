@@ -1,4 +1,4 @@
-package org.codeandmagic.android.wink;
+package org.codeandmagic.android.wink.demo;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import org.codeandmagic.android.wink.demo.R;
 
 public class ActivityDemo extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
