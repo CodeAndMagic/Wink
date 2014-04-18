@@ -1,7 +1,6 @@
 apply plugin: 'android'
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
@@ -17,6 +16,6 @@ android {
 
 dependencies {
 	compile 'com.android.support:appcompat-v7:19.1.0'
-    compile 'com.larswerkman:colorpicker:1.0'
+    compile 'com.larswerkman:HoloColorPicker:1.4'
     compile project(':Wink')
 }

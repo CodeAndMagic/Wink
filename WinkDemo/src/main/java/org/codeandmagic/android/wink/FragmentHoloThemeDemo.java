@@ -10,9 +10,9 @@ import android.widget.RadioGroup;
 
 import org.codeandmagic.android.wink.support.Wink;
 
-import com.larswerkman.colorpicker.ColorPicker;
-import com.larswerkman.colorpicker.OpacityBar;
-import com.larswerkman.colorpicker.SVBar;
+import com.larswerkman.holocolorpicker.ColorPicker;
+import com.larswerkman.holocolorpicker.OpacityBar;
+import com.larswerkman.holocolorpicker.SVBar;
 
 /**
  * Created by evelyne24 on 09/10/2013.
